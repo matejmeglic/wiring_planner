@@ -1,0 +1,18 @@
+{
+  "canvasOffsetWidth": 100,
+  "canvasOffsetHeight": 100,
+  "canvasOffsetPercentage": 1.2,
+  "horizontalRulerOffset": 20,
+  "horizontalRulerTextOffset": 70,
+  "verticalRulerOffset": 20,
+  "verticalRulerTextOffset": 40,
+  "rulerAndTextColor": "purple",
+  "rulerTextSize": 15,
+  "rulerWidth": 2,
+  "windowColor": "#00bfff",
+  "windowHingesColor": "#fff",
+  "shelfColor": "grey",
+  "shelfWidth": 15,
+  "wallColor": "gray",
+  "wallWidth": 4
+}

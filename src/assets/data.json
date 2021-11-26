@@ -1,0 +1,48 @@
+{
+  "rooms": [
+    {
+      "room_name": "Dnevna",
+      "wall_name": "Trzic",
+      "wall": {
+        "width": 10.7,
+        "height": 2.55,
+        "unitOfMeasure": "m"
+      },
+      "windows": [
+        {
+          "windowWidth": 1600,
+          "windowHeight": 1600,
+          "windowShelfStartsOn": 700,
+          "windowShelfHeight": 20,
+          "windowDistance": 700,
+          "measurementDirection": "leftToRight",
+          "unitOfMeasure": "mm",
+          "hinges": "one",
+          "renderShelf": true
+        },
+        {
+          "windowWidth": 1600,
+          "windowHeight": 1600,
+          "windowShelfStartsOn": 700,
+          "windowShelfHeight": 20,
+          "windowDistance": 4550,
+          "measurementDirection": "leftToRight",
+          "unitOfMeasure": "mm",
+          "hinges": "one",
+          "renderShelf": true
+        },
+        {
+          "windowWidth": 1600,
+          "windowHeight": 1600,
+          "windowShelfStartsOn": 700,
+          "windowShelfHeight": 20,
+          "windowDistance": 700,
+          "measurementDirection": "rightToLeft",
+          "unitOfMeasure": "mm",
+          "hinges": "one",
+          "renderShelf": true
+        }
+      ]
+    }
+  ]
+}
