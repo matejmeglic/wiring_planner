@@ -1,6 +1,6 @@
 import "./App.css";
 import DefineStage from "./components/DefineStage";
-import DrawWall from "./components/DrawWall.js";
+import CreateSideView from "./components/CreateSideView.js";
 import DrawWindow from "./components/DrawWindow.js";
 import React, { Component } from "react";
 import { Stage, Layer } from "react-konva";
@@ -16,7 +16,6 @@ class App extends Component {
   );
 
   render() {
-    console.log(this.data);
     return (
       <Stage
         width={
@@ -34,11 +33,12 @@ class App extends Component {
         }
       >
         <Layer>
-          <DrawWall
+          <CreateSideView
             windowWidth={window.innerWidth}
             windowHeight={window.innerHeight}
             wall={this.data.wall}
             settings={settings}
+            ratio={0.9}
           />
           {this.data.windows.map((singleWindow, i) => (
             <DrawWindow

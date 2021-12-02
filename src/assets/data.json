@@ -5,8 +5,16 @@
       "wall_name": "Trzic",
       "wall": {
         "width": 10.7,
-        "height": 2.55,
-        "unitOfMeasure": "m"
+        "height": 4.55,
+        "unitOfMeasure": "m",
+        "loft": true,
+        "loftMeasurements": {
+          "leftLoftStartHeight": 3,
+          "leftCeilingStarts": 5.35,
+          "rightLoftStartHeight": 3,
+          "rightCeilingStarts": 3,
+          "midLoftWidth": 0
+        }
       },
       "windows": [
         {

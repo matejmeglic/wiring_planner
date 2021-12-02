@@ -21,7 +21,6 @@ class DrawWindow extends React.Component {
   };
 
   render() {
-    console.log(this.state.singleWindow);
     return (
       <div>
         {/* render window-blue */}
