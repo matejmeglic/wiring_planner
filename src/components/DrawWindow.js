@@ -59,7 +59,11 @@ class DrawWindow extends React.Component {
                 this.state.singleWindow.windowHeight) /
               1000
             }
-            fill={this.state.settings.windowColor}
+            fill={
+              this.state.singleWindow.innerDoor === false
+                ? this.state.settings.windowColor
+                : this.state.settings.innerDoorColor
+            }
             key={this.state.i + "w"}
           />
           {/* render window frame-hinges */}
@@ -199,6 +203,179 @@ class DrawWindow extends React.Component {
           />
         ) : (
           <div></div>
+        )}
+        {/* render door knob */}
+        {this.state.singleWindow.hinges === "one" ? (
+          this.state.singleWindow.doorKnob === "" ? (
+            <p></p>
+          ) : this.state.singleWindow.doorKnob === "left" ? (
+            <Rect
+              x={
+                this.state.singleWindow.measurementDirection === "leftToRight"
+                  ? this.state.settings.canvasOffsetWidth +
+                    (this.state.canvasOneMeter *
+                      this.state.singleWindow.windowDistance) /
+                      1000
+                  : this.state.singleWindow.measurementDirection ===
+                    "rightToLeft"
+                  ? this.state.settings.canvasOffsetWidth +
+                    this.state.canvasWallWidth -
+                    (this.state.canvasOneMeter *
+                      this.state.singleWindow.windowWidth) /
+                      1000 -
+                    (this.state.canvasOneMeter *
+                      this.state.singleWindow.windowDistance) /
+                      1000
+                  : 0
+              }
+              y={
+                this.state.settings.canvasOffsetHeight +
+                (this.state.canvasOneMeter *
+                  this.state.singleWindow.windowShelfStartsOn) /
+                  1000 +
+                (this.state.canvasOneMeter *
+                  this.state.singleWindow.windowHeight) /
+                  1000 /
+                  2
+              }
+              width={(this.state.canvasOneMeter * 200) / 1000}
+              height={(this.state.canvasOneMeter * 60) / 1000}
+              fill={this.state.settings.doorKnobColor}
+              shadowColor={"#000"}
+              shadowBlur={1}
+              key={this.state.i + "w"}
+            />
+          ) : this.state.singleWindow.doorKnob === "right" ? (
+            <Rect
+              x={
+                this.state.singleWindow.measurementDirection === "leftToRight"
+                  ? this.state.settings.canvasOffsetWidth +
+                    (this.state.canvasOneMeter *
+                      this.state.singleWindow.windowDistance) /
+                      1000 +
+                    (this.state.canvasOneMeter *
+                      this.state.singleWindow.windowWidth) /
+                      1000 -
+                    (this.state.canvasOneMeter * 200) / 1000
+                  : this.state.singleWindow.measurementDirection ===
+                    "rightToLeft"
+                  ? this.state.settings.canvasOffsetWidth +
+                    this.state.canvasWallWidth -
+                    (this.state.canvasOneMeter *
+                      this.state.singleWindow.windowDistance) /
+                      1000 -
+                    (this.state.canvasOneMeter * 200) / 1000
+                  : 0
+              }
+              y={
+                this.state.settings.canvasOffsetHeight +
+                (this.state.canvasOneMeter *
+                  this.state.singleWindow.windowShelfStartsOn) /
+                  1000 +
+                (this.state.canvasOneMeter *
+                  this.state.singleWindow.windowHeight) /
+                  1000 /
+                  2
+              }
+              width={(this.state.canvasOneMeter * 200) / 1000}
+              height={(this.state.canvasOneMeter * 60) / 1000}
+              fill={this.state.settings.doorKnobColor}
+              shadowColor={"#000"}
+              shadowBlur={1}
+              key={this.state.i + "w"}
+            />
+          ) : (
+            <p></p>
+          )
+        ) : // if there are two hinges
+        this.state.singleWindow.doorKnob === "" ? (
+          <p></p>
+        ) : this.state.singleWindow.doorKnob === "left" ? (
+          <Rect
+            x={
+              this.state.singleWindow.measurementDirection === "leftToRight"
+                ? this.state.settings.canvasOffsetWidth +
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowDistance) /
+                    1000 +
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowWidth) /
+                    1000 /
+                    2 -
+                  (this.state.canvasOneMeter * 200) / 1000
+                : this.state.singleWindow.measurementDirection === "rightToLeft"
+                ? this.state.settings.canvasOffsetWidth +
+                  this.state.canvasWallWidth -
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowDistance) /
+                    1000 -
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowWidth) /
+                    1000 /
+                    2 -
+                  (this.state.canvasOneMeter * 200) / 1000
+                : 0
+            }
+            y={
+              this.state.settings.canvasOffsetHeight +
+              (this.state.canvasOneMeter *
+                this.state.singleWindow.windowShelfStartsOn) /
+                1000 +
+              (this.state.canvasOneMeter *
+                this.state.singleWindow.windowHeight) /
+                1000 /
+                2
+            }
+            width={(this.state.canvasOneMeter * 200) / 1000}
+            height={(this.state.canvasOneMeter * 60) / 1000}
+            fill={this.state.settings.doorKnobColor}
+            shadowColor={"#000"}
+            shadowBlur={1}
+            key={this.state.i + "w"}
+          />
+        ) : this.state.singleWindow.doorKnob === "right" ? (
+          <Rect
+            x={
+              this.state.singleWindow.measurementDirection === "leftToRight"
+                ? this.state.settings.canvasOffsetWidth +
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowDistance) /
+                    1000 +
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowWidth) /
+                    1000 /
+                    2
+                : this.state.singleWindow.measurementDirection === "rightToLeft"
+                ? this.state.settings.canvasOffsetWidth +
+                  this.state.canvasWallWidth -
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowDistance) /
+                    1000 -
+                  (this.state.canvasOneMeter *
+                    this.state.singleWindow.windowWidth) /
+                    1000 /
+                    2
+                : 0
+            }
+            y={
+              this.state.settings.canvasOffsetHeight +
+              (this.state.canvasOneMeter *
+                this.state.singleWindow.windowShelfStartsOn) /
+                1000 +
+              (this.state.canvasOneMeter *
+                this.state.singleWindow.windowHeight) /
+                1000 /
+                2
+            }
+            width={(this.state.canvasOneMeter * 200) / 1000}
+            height={(this.state.canvasOneMeter * 60) / 1000}
+            fill={this.state.settings.doorKnobColor}
+            shadowColor={"#000"}
+            shadowBlur={1}
+            key={this.state.i + "w"}
+          />
+        ) : (
+          <p></p>
         )}
       </div>
     );

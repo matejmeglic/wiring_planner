@@ -11,6 +11,8 @@
   "rulerWidth": 2,
   "windowColor": "#96E2F9",
   "windowHingesColor": "#fff",
+  "innerDoorColor": "#D0CBC4",
+  "doorKnobColor": "#fff",
   "shelfColor": "grey",
   "shelfWidth": 15,
   "wallColor": "gray",

@@ -25,8 +25,10 @@
           "windowDistance": 700,
           "measurementDirection": "leftToRight",
           "unitOfMeasure": "mm",
-          "hinges": "one",
-          "renderShelf": true
+          "hinges": "two",
+          "renderShelf": true,
+          "innerDoor": true,
+          "doorKnob": "left"
         },
         {
           "windowWidth": 1600,
@@ -36,8 +38,10 @@
           "windowDistance": 4550,
           "measurementDirection": "leftToRight",
           "unitOfMeasure": "mm",
-          "hinges": "one",
-          "renderShelf": true
+          "hinges": "two",
+          "renderShelf": true,
+          "innerDoor": false,
+          "doorKnob": "right"
         },
         {
           "windowWidth": 1600,
@@ -47,8 +51,10 @@
           "windowDistance": 700,
           "measurementDirection": "rightToLeft",
           "unitOfMeasure": "mm",
-          "hinges": "one",
-          "renderShelf": true
+          "hinges": "two",
+          "renderShelf": true,
+          "innerDoor": false,
+          "doorKnob": "right"
         }
       ],
       "wiring": {
@@ -238,7 +244,9 @@
           "measurementDirection": "leftToRight",
           "unitOfMeasure": "mm",
           "hinges": "one",
-          "renderShelf": true
+          "renderShelf": true,
+          "innerDoor": false,
+          "doorKnob": "left"
         }
       ],
       "wiring": {
