@@ -1,11 +1,8 @@
-import Round from "./Round";
-
 function CalculateLoftPoints(
   wallWidth,
   wallHeight,
   loftMeasurements,
-  oneMeter,
-  ratio
+  oneMeter
 ) {
   let state = {
     wallWidth: wallWidth,

@@ -1,5 +1,5 @@
-import React, { Component, useState } from "react";
-import { Rect, Text, Line } from "react-konva";
+import React from "react";
+import { Text, Line } from "react-konva";
 import Round from "./Round";
 import DrawWall from "./DrawWall";
 

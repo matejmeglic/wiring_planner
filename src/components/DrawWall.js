@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { Line } from "react-konva";
 import CalculateLoftPoints from "./CalculateLoftPoints";
 
@@ -35,8 +35,7 @@ class DrawWall extends React.Component {
                 this.state.wallWidth,
                 this.state.wallHeight,
                 this.props.wallObject.loftMeasurements,
-                this.props.canvasOneMeter,
-                this.props.ratio
+                this.props.canvasOneMeter
               )
         }
         strokeWidth={this.state.settings.wallWidth}

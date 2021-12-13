@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React from "react";
 import { Rect } from "react-konva";
 import Round from "./Round";
 
