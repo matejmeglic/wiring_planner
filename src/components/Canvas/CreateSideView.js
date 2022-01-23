@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, Line } from "react-konva";
-import Round from "./Round";
-import DrawWall from "./DrawWall";
+import Round from "../Round";
+import DrawWall from "../../components/Canvas/DrawWall";
 
 class CreateSideView extends React.Component {
   state = {

@@ -1,10 +1,10 @@
-import DefineStage from "../components/DefineStage";
-import CreateSideView from "../components/CreateSideView.js";
-import DrawWindow from "../components/DrawWindow.js";
-import DrawWiring from "../components/DrawWiring";
-import DrawHarness from "./DrawHarness";
+import DefineStage from "../../components/Canvas/DefineStage";
+import CreateSideView from "../../components/Canvas/CreateSideView.js";
+import DrawWindow from "../../components/Canvas/DrawWindow.js";
+import DrawWiring from "../../components/Canvas/DrawWiring";
+import DrawHarness from "../../components/Canvas/DrawHarness";
 import { Stage, Layer } from "react-konva";
-import settings from "../assets/pageViewSettings.json";
+import settings from "../../assets/pageViewSettings.json";
 
 function RenderWall(data) {
   let wallDimensions = DefineStage(
@@ -17,7 +17,7 @@ function RenderWall(data) {
     <div>
       <br />
       <h2 style={{ marginLeft: settings.canvasOffsetWidth }}>
-        {data.room_name} - {data.wall_name}
+        {data.wall_name}
       </h2>
       <Stage
         width={

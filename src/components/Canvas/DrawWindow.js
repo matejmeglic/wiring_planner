@@ -1,6 +1,6 @@
 import React from "react";
 import { Rect } from "react-konva";
-import Round from "./Round";
+import Round from "../Round";
 
 class DrawWindow extends React.Component {
   state = {

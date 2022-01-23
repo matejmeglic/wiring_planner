@@ -1,7 +1,7 @@
 import React from "react";
 import { Line } from "react-konva";
-import Round from "./Round";
-import OrientationTransformDataPoints from "./OrientationTransformDataPoints";
+import Round from "../Round";
+import OrientationTransformDataPoints from "../../components/Canvas/OrientationTransformDataPoints";
 
 class DrawWiring extends React.Component {
   state = {

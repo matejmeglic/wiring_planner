@@ -1,4 +1,4 @@
-import Round from "./Round";
+import Round from "../Round";
 
 function DefineStage(windowWidth, windowHeight, wall) {
   let state = {
