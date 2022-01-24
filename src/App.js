@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Navigation from "./components/Navigation/Navigation";
-import RoomDropdown from "./components/Navigation/RoomDropdown";
-import CreateProjectForm from "./components/BuilderActions/CreateProjectForm";
 import LeftMenu from "./components/Navigation/LeftMenu";
 
 const App = () => {
@@ -13,23 +11,32 @@ const App = () => {
 
   const [data, setData] = useState(loadData);
   const [walls, setWalls] = useState("");
+  const [selectedRoom, setSelectedRoom] = useState("");
+  const [selectedWall, setSelectedWall] = useState("");
 
   useEffect(() => {}, [data]);
   useEffect(() => {}, [walls]);
 
   return (
-    <Box sx={{ marginLeft: 5, marginTop: 2 }}>
+    <Box
+      sx={{
+        marginLeft: 5,
+        marginTop: 2,
+      }}
+    >
       <br />
-      {Navigation(data)}
-      {LeftMenu(data, setData, setWalls)}
-      {/* {data === "nodata"
-        ? ""
-        : data.data.length === 0
-        ? ""
-        : RoomDropdown(data, setWalls)} */}
-
-      {/* {CreateProjectForm(setData)} */}
-      {/* {walls} */}
+      {Navigation(data)}{" "}
+      {LeftMenu(
+        data,
+        setData,
+        setWalls,
+        selectedRoom,
+        setSelectedRoom,
+        selectedWall,
+        setSelectedWall
+      )}
+      {selectedRoom !== "" ? <p>Room: {selectedRoom}</p> : ""}
+      {selectedWall !== "" ? <p>Wall: {selectedWall}</p> : ""}
     </Box>
   );
 };

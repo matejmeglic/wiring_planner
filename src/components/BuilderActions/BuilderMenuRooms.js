@@ -16,12 +16,12 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteDialog from "./DeleteDialog";
 
-export default function BuilderMenuRooms(
-  data,
-  setData,
-  setMenuLevel,
-  setSpecificRoom
-) {
+export default function BuilderMenuRooms(props) {
+  let data = props.data;
+  let setData = props.setData;
+  let setMenuLevel = props.setMenuLevel;
+  let setSelectedRoom = props.setSelectedRoom;
+
   const [newRoomClick, setNewRoomClick] = useState(false);
   const [editRoomClick, setEditRoomClick] = useState(false);
   const [editRoomNo, setEditRoomNo] = useState(false);
@@ -56,7 +56,7 @@ export default function BuilderMenuRooms(
     );
 
     if (roomAlreadyExists === true) {
-      setErrorMessage("Name already exists!");
+      setErrorMessage("Room already exists!");
     } else {
       updatedData.data.map((room) =>
         room.room_name !== editRoomName ? "" : newRoom.push(room)
@@ -94,8 +94,8 @@ export default function BuilderMenuRooms(
   };
 
   const goToRoomDetails = (e) => {
-    setSpecificRoom(e.target.outerText);
-    setMenuLevel("roomDetails");
+    setSelectedRoom(e.target.outerText);
+    setMenuLevel("walls");
   };
 
   return (

@@ -1,10 +1,20 @@
 import React, { useState, useEffect } from "react";
 import BuilderMenuRooms from "../BuilderActions/BuilderMenuRooms";
-import BuilderMenuRoomDetails from "../BuilderActions/BuilderMenuRoomDetails";
+import BuilderMenuWalls from "../BuilderActions/BuilderMenuWalls";
+import BuilderMenuWallDetails from "../BuilderActions/BuilderMenuWallDetails";
+import CreateNewWall from "../BuilderActions/CreateNewWall";
 
-const LeftMenu = (data, setData, setWalls) => {
+const LeftMenu = (
+  data,
+  setData,
+  setWalls,
+  selectedRoom,
+  setSelectedRoom,
+  selectedWall,
+  setSelectedWall
+) => {
   const [menuLevel, setMenuLevel] = useState("rooms");
-  const [specificRoom, setSpecificRoom] = useState("");
+  const [wallSettings, setWallSettings] = useState("");
 
   useEffect(() => {}, [menuLevel]);
 
@@ -12,15 +22,53 @@ const LeftMenu = (data, setData, setWalls) => {
     return "";
   } else if (menuLevel === "rooms") {
     return (
-      <div>
-        {BuilderMenuRooms(data, setData, setMenuLevel, setSpecificRoom)}
-      </div>
+      <BuilderMenuRooms
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        setSelectedRoom={setSelectedRoom}
+        setSelectedWall={setSelectedWall}
+      />
     );
-  } else if (menuLevel === "roomDetails") {
+  } else if (menuLevel === "walls") {
     return (
-      <div>
-        {BuilderMenuRoomDetails(data, setData, setMenuLevel, setSpecificRoom)}
-      </div>
+      <BuilderMenuWalls
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
+        setSelectedWall={setSelectedWall}
+        wallSettings={wallSettings}
+        setWallSettings={setWallSettings}
+      />
+    );
+  } else if (menuLevel === "wallDetails") {
+    return (
+      <BuilderMenuWallDetails
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
+        setSelectedWall={setSelectedWall}
+      />
+    );
+  } else if (menuLevel === "createWall") {
+    return (
+      <CreateNewWall
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
+        setSelectedWall={setSelectedWall}
+        wallSettings={wallSettings}
+        setWallSettings={setWallSettings}
+      />
     );
   } else {
     return "";

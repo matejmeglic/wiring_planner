@@ -7,3 +7,4 @@
 5h setting states, navigation, demo modal, download JSON and storing data to LS
 10h navigation panel, restructuring components, uploadJSON, createProjectForm, left menu (argh setData), edit and delete buttons
 2h left menu splitted, edit rooms enhancements, roomDetails menu started
+4h multi-level menu (walls, wallSettings)
