@@ -3,6 +3,9 @@ import BuilderMenuRooms from "../BuilderActions/BuilderMenuRooms";
 import BuilderMenuWalls from "../BuilderActions/BuilderMenuWalls";
 import BuilderMenuWallDetails from "../BuilderActions/BuilderMenuWallDetails";
 import CreateNewWall from "../BuilderActions/CreateNewWall";
+import CreateNewWiring from "../BuilderActions/CreateNewWiring";
+import CreateNewHarness from "../BuilderActions/CreateNewHarness";
+import CreateNewWindow from "../BuilderActions/CreateNewWindow";
 
 const LeftMenu = (
   data,
@@ -11,7 +14,9 @@ const LeftMenu = (
   selectedRoom,
   setSelectedRoom,
   selectedWall,
-  setSelectedWall
+  setSelectedWall,
+  selectedWallDetail,
+  setSelectedWallDetail
 ) => {
   const [menuLevel, setMenuLevel] = useState("rooms");
   const [wallSettings, setWallSettings] = useState("");
@@ -68,6 +73,54 @@ const LeftMenu = (
         setSelectedWall={setSelectedWall}
         wallSettings={wallSettings}
         setWallSettings={setWallSettings}
+      />
+    );
+  } else if (menuLevel === "createWiring") {
+    return (
+      <CreateNewWiring
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
+        setSelectedWall={setSelectedWall}
+        wallSettings={wallSettings}
+        setWallSettings={setWallSettings}
+        selectedWallDetail={selectedWallDetail}
+        setSelectedWallDetail={setSelectedWallDetail}
+      />
+    );
+  } else if (menuLevel === "createWindow") {
+    return (
+      <CreateNewWindow
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
+        setSelectedWall={setSelectedWall}
+        wallSettings={wallSettings}
+        setWallSettings={setWallSettings}
+        selectedWallDetail={selectedWallDetail}
+        setSelectedWallDetail={setSelectedWallDetail}
+      />
+    );
+  } else if (menuLevel === "createHarness") {
+    return (
+      <CreateNewHarness
+        data={data}
+        setData={setData}
+        setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
+        setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
+        setSelectedWall={setSelectedWall}
+        wallSettings={wallSettings}
+        setWallSettings={setWallSettings}
+        selectedWallDetail={selectedWallDetail}
+        setSelectedWallDetail={setSelectedWallDetail}
       />
     );
   } else {

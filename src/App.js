@@ -13,6 +13,7 @@ const App = () => {
   const [walls, setWalls] = useState("");
   const [selectedRoom, setSelectedRoom] = useState("");
   const [selectedWall, setSelectedWall] = useState("");
+  const [selectedWallDetail, setSelectedWallDetail] = useState("");
 
   useEffect(() => {}, [data]);
   useEffect(() => {}, [walls]);
@@ -33,7 +34,9 @@ const App = () => {
         selectedRoom,
         setSelectedRoom,
         selectedWall,
-        setSelectedWall
+        setSelectedWall,
+        selectedWallDetail,
+        setSelectedWallDetail
       )}
       {selectedRoom !== "" ? <p>Room: {selectedRoom}</p> : ""}
       {selectedWall !== "" ? <p>Wall: {selectedWall}</p> : ""}

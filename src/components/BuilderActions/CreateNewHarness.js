@@ -14,9 +14,8 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
 import { red } from "@mui/material/colors";
-import settings from "../../assets/pageViewSettings.json";
 
-export default function CreateNewWall(props) {
+export default function CreateNewHarness(props) {
   let data = props.data;
   let setData = props.setData;
   let setMenuLevel = props.setMenuLevel;
@@ -123,54 +122,21 @@ export default function CreateNewWall(props) {
         },
       };
     }
-    if (loftSelected === "true") {
-      if (loftType === "left" || loftType === "both") {
-        wallObject.wall.loftMeasurements.leftLoftStartHeight =
-          document.getElementById("leftLoftStartHeight").value;
-        wallObject.wall.loftMeasurements.leftCeilingStarts =
-          document.getElementById("leftCeilingStarts").value;
-      }
-      if (loftType === "right" || loftType === "both") {
-        wallObject.wall.loftMeasurements.rightLoftStartHeight =
-          document.getElementById("rightLoftStartHeight").value;
-        wallObject.wall.loftMeasurements.rightCeilingStarts =
-          document.getElementById("rightCeilingStarts").value;
-      }
-      if (loftType === "both") {
-        wallObject.wall.loftMeasurements.midLoftWidth =
-          document.getElementById("midLoftWidth").value;
-      }
-    } else {
-      wallObject.wall.loftMeasurements.leftLoftStartHeight = 0;
-      wallObject.wall.loftMeasurements.leftCeilingStarts = 0;
-      wallObject.wall.loftMeasurements.rightLoftStartHeight = 0;
-      wallObject.wall.loftMeasurements.rightCeilingStarts = 0;
-      wallObject.wall.loftMeasurements.midLoftWidth = 0;
+    if (loftType === "left" || loftType === "both") {
+      wallObject.wall.loftMeasurements.leftLoftStartHeight =
+        document.getElementById("leftLoftStartHeight").value;
+      wallObject.wall.loftMeasurements.leftCeilingStarts =
+        document.getElementById("leftCeilingStarts").value;
     }
-    if (wallSettings === "") {
-      wallObject.windows = [];
-      wallObject.wiring = {
-        electric: {
-          stroke: settings.electricityStroke,
-          strokeWidth: settings.electricityStrokeWidth,
-          lines: [],
-        },
-        water: {
-          stroke: settings.waterStroke,
-          strokeWidth: settings.waterStrokeWidth,
-          lines: [],
-        },
-        plumbing: {
-          stroke: settings.plumbingStroke,
-          strokeWidth: settings.plumbingStrokeWidth,
-          lines: [],
-        },
-        ethernet: {
-          stroke: settings.ethernetStroke,
-          strokeWidth: settings.ethernetStrokeWidth,
-          lines: [],
-        },
-      };
+    if (loftType === "right" || loftType === "both") {
+      wallObject.wall.loftMeasurements.rightLoftStartHeight =
+        document.getElementById("rightLoftStartHeight").value;
+      wallObject.wall.loftMeasurements.rightCeilingStarts =
+        document.getElementById("rightCeilingStarts").value;
+    }
+    if (loftType === "both") {
+      wallObject.wall.loftMeasurements.midLoftWidth =
+        document.getElementById("midLoftWidth").value;
     }
     return wallObject;
   };

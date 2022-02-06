@@ -16,5 +16,14 @@
   "shelfColor": "grey",
   "shelfWidth": 15,
   "wallColor": "gray",
-  "wallWidth": 4
+  "wallWidth": 4,
+  "electricityStroke": "orange",
+  "electricityStrokeWidth": 5,
+  "waterStroke": "lightBlue",
+  "waterStrokeWidth": 10,
+  "plumbingStroke": "brown",
+  "plumbingStrokeWidth": 10,
+  "ethernetStroke": "cyan",
+  "ethernetStrokeWidth": 5,
+  "harnessStroke": "yellow"
 }

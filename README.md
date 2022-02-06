@@ -8,3 +8,4 @@
 10h navigation panel, restructuring components, uploadJSON, createProjectForm, left menu (argh setData), edit and delete buttons
 2h left menu splitted, edit rooms enhancements, roomDetails menu started
 4h multi-level menu (walls, wallSettings)
+5h wall handling+errorhandling + wallDetails menu

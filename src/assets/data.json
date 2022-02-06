@@ -10,7 +10,7 @@
             "width": 10.7,
             "height": 2.55,
             "unitOfMeasure": "m",
-            "loft": true,
+            "loft": "true",
             "loftMeasurements": {
               "leftLoftStartHeight": 1.5,
               "leftCeilingStarts": 2,
@@ -67,7 +67,7 @@
               "strokeWidth": 7,
               "lines": [
                 {
-                  "description": "",
+                  "description": "Štedilnik",
                   "dataPoints": [3000, 0, 3000, 1500, 2500, 1500, 2500, 2000],
                   "orientationHorizontal": "leftToRight",
                   "orientationVertical": "bottomToTop",
@@ -193,6 +193,22 @@
                 }
               ]
             },
+            "plumbing": {
+              "stroke": "#4887F6",
+              "strokeWidth": 13,
+              "lines": [
+                {
+                  "description": "",
+                  "dataPoints": [6300, 0, 6300, 2500],
+                  "orientationHorizontal": "leftToRight",
+                  "orientationVertical": "bottomToTop",
+                  "harness": {
+                    "draw": false,
+                    "harnessArray": []
+                  }
+                }
+              ]
+            },
             "ethernet": {
               "stroke": "#33D1FF",
               "strokeWidth": 7,
@@ -227,7 +243,7 @@
             "width": 4.2,
             "height": 2.55,
             "unitOfMeasure": "m",
-            "loft": false,
+            "loft": "false",
             "loftMeasurements": {
               "leftLoftStartHeight": 0,
               "leftCeilingStarts": 0,
@@ -254,6 +270,7 @@
           "wiring": {
             "electric": { "stroke": "red", "strokeWidth": 5, "lines": [] },
             "water": { "stroke": "blue", "strokeWidth": 10, "lines": [] },
+            "plumbing": { "stroke": "blue", "strokeWidth": 10, "lines": [] },
             "ethernet": { "stroke": "babyblue", "strokeWidth": 5, "lines": [] }
           }
         }

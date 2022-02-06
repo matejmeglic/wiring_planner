@@ -115,6 +115,7 @@ export default function BuilderMenuWalls(props) {
             </Typography>
           </ListItemText>
         </MenuItem>
+        <Divider />
         {wallData.map((wall, i) => (
           <MenuItem key={i}>
             <ListItemText onClick={(e) => goToWallDetails(e)}>
