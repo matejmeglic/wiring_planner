@@ -9,3 +9,4 @@
 2h left menu splitted, edit rooms enhancements, roomDetails menu started
 4h multi-level menu (walls, wallSettings)
 5h wall handling+errorhandling + wallDetails menu
+2h wiring submenu

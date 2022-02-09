@@ -252,7 +252,6 @@ export default function CreateNewWall(props) {
           onKeyDown={handleKeyDown}
           defaultValue={wallSettings !== "" ? wallSettings.wall.width : ""}
         />
-
         <TextField
           id="wallHeight"
           name="wallHeight"
@@ -262,12 +261,11 @@ export default function CreateNewWall(props) {
           type="number"
           onKeyDown={handleKeyDown}
           defaultValue={wallSettings !== "" ? wallSettings.wall.height : ""}
-        />
-
+        />{" "}
+        <br /> <br />
         <Typography variant="body2" color="text.secondary">
           Is there a loft:
         </Typography>
-
         <FormControl component="fieldset" name="loft-true-false">
           <RadioGroup
             onChange={(e) => changeLoftStatus(e.target.value)}

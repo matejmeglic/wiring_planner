@@ -21,6 +21,7 @@
           },
           "windows": [
             {
+              "description": "Tržiško okno",
               "windowWidth": 1600,
               "windowHeight": 2100,
               "windowShelfStartsOn": 0,
@@ -34,6 +35,7 @@
               "doorKnob": "left"
             },
             {
+              "description": "",
               "windowWidth": 1600,
               "windowHeight": 1600,
               "windowShelfStartsOn": 700,
@@ -47,6 +49,7 @@
               "doorKnob": "right"
             },
             {
+              "description": "",
               "windowWidth": 1600,
               "windowHeight": 1600,
               "windowShelfStartsOn": 700,
@@ -254,6 +257,7 @@
           },
           "windows": [
             {
+              "description": "",
               "windowWidth": 1600,
               "windowHeight": 1600,
               "windowShelfStartsOn": 700,

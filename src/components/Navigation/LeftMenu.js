@@ -59,6 +59,8 @@ const LeftMenu = (
         setSelectedRoom={setSelectedRoom}
         selectedWall={selectedWall}
         setSelectedWall={setSelectedWall}
+        selectedWallDetail={selectedWallDetail}
+        setSelectedWallDetail={setSelectedWallDetail}
       />
     );
   } else if (menuLevel === "createWall") {

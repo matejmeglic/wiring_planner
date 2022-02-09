@@ -20,173 +20,58 @@ export default function CreateNewWiring(props) {
   let setData = props.setData;
   let setMenuLevel = props.setMenuLevel;
   let selectedRoom = props.selectedRoom;
+  let selectedWall = props.selectedWall;
   let setSelectedRoom = props.setSelectedRoom;
   let setSelectedWall = props.setSelectedWall;
   let wallSettings = props.wallSettings;
   let setWallSettings = props.setWallSettings;
+  let selectedWallDetail = props.selectedWallDetail;
+  let setSelectedWallDetail = props.setSelectedWallDetail;
 
-  let wallData = [];
+  let wallData;
   data.data.map((room) =>
     room.room_name === selectedRoom
-      ? room.walls.map((wall) => wallData.push(wall))
+      ? room.walls.map((wall) =>
+          wall.wall_name === selectedWall ? (wallData = wall) : ""
+        )
       : ""
   );
 
+  console.log(wallData.wiring.electric);
+  console.log(selectedWallDetail);
+
   const [errorMessage, setErrorMessage] = useState("");
-  const [loftSelected, setLoftSelected] = useState(
-    wallSettings !== "" ? wallSettings.wall.loft : "false"
+  const [horizontalMeasurement, setHorizontalMeasurement] = useState(
+    selectedWallDetail.count === "new"
+      ? "leftToRight"
+      : wallData.wiring[selectedWallDetail.type].lines[selectedWallDetail.count]
+          .orientationHorizontal
   );
-  const [loftType, setLoftType] = useState(
-    wallSettings === ""
-      ? "left"
-      : wallSettings.wall.loftMeasurements.leftCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0 &&
-        wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
-      ? "both"
-      : wallSettings.wall.loftMeasurements.leftCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0
-      ? "left"
-      : wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
-      ? "right"
-      : "left"
+  const [verticalMeasurement, setVerticalMeasurement] = useState(
+    selectedWallDetail.count === "new"
+      ? "bottomToTop"
+      : wallData.wiring[selectedWallDetail.type].lines[selectedWallDetail.count]
+          .orientationVertical
   );
 
-  const changeLoftStatus = (value) => {
-    setLoftSelected(value);
+  const updateData = () => {};
+
+  const changeMeasurementH = (value) => {
+    setHorizontalMeasurement(value);
   };
 
-  const changeLoftTypeStatus = (value) => {
-    setLoftType(value);
-  };
-
-  const fetchWallObjectData = () => {
-    let wallObject = "";
-    if (loftSelected === "true") {
-      if (loftType === "left") {
-        if (
-          document.getElementById("leftLoftStartHeight").value === "" ||
-          document.getElementById("leftCeilingStarts").value === ""
-        ) {
-          setErrorMessage("Please enter loft data.");
-          wallObject = "error";
-        }
-      }
-      if (loftType === "right") {
-        if (
-          document.getElementById("rightLoftStartHeight").value === "" ||
-          document.getElementById("rightCeilingStarts").value === ""
-        ) {
-          setErrorMessage("Please enter loft data.");
-          wallObject = "error";
-        }
-      }
-      if (loftType === "both") {
-        if (
-          document.getElementById("leftLoftStartHeight").value === "" ||
-          document.getElementById("leftCeilingStarts").value === "" ||
-          document.getElementById("rightLoftStartHeight").value === "" ||
-          document.getElementById("rightCeilingStarts").value === "" ||
-          document.getElementById("midLoftWidth").value === ""
-        ) {
-          setErrorMessage("Please enter loft data.");
-          wallObject = "error";
-        }
-      }
-    }
-    if (document.getElementById("wallHeight").value === "") {
-      setErrorMessage("Please enter wall heigth.");
-      wallObject = "error";
-    }
-    if (document.getElementById("wallWidth").value === "") {
-      setErrorMessage("Please enter wall width.");
-      wallObject = "error";
-    }
-    if (document.getElementById("wallName").value === "") {
-      setErrorMessage("Wall name should not be empty.");
-      wallObject = "error";
-    }
-
-    if (wallObject === "error") {
-      return wallObject;
-    } else {
-      wallObject = {
-        wall_name: document.getElementById("wallName").value,
-        wall: {
-          width: document.getElementById("wallWidth").value,
-          height: document.getElementById("wallHeight").value,
-          unitOfMeasure: "m",
-          loft: loftSelected,
-          loftMeasurements: {},
-        },
-      };
-    }
-    if (loftType === "left" || loftType === "both") {
-      wallObject.wall.loftMeasurements.leftLoftStartHeight =
-        document.getElementById("leftLoftStartHeight").value;
-      wallObject.wall.loftMeasurements.leftCeilingStarts =
-        document.getElementById("leftCeilingStarts").value;
-    }
-    if (loftType === "right" || loftType === "both") {
-      wallObject.wall.loftMeasurements.rightLoftStartHeight =
-        document.getElementById("rightLoftStartHeight").value;
-      wallObject.wall.loftMeasurements.rightCeilingStarts =
-        document.getElementById("rightCeilingStarts").value;
-    }
-    if (loftType === "both") {
-      wallObject.wall.loftMeasurements.midLoftWidth =
-        document.getElementById("midLoftWidth").value;
-    }
-    return wallObject;
-  };
-
-  const updateData = () => {
-    let updatedData = data;
-
-    let wallObject = fetchWallObjectData();
-
-    if (wallObject === "error") {
-      return "";
-    } else {
-      if (wallSettings === "") {
-        updatedData.data.map((room) =>
-          room.room_name === selectedRoom ? room.walls.push(wallObject) : ""
-        );
-      } else {
-        updatedData.data.map((room, i) =>
-          room.room_name === selectedRoom
-            ? updatedData.data[i].walls.map((wall, j) =>
-                wall.wall_name === wallSettings.wall_name
-                  ? updatedData.data[0].walls.splice(j, 1, wallObject)
-                  : ""
-              )
-            : ""
-        );
-      }
-      setData(updatedData);
-      localStorage.setItem("savedData_MM", JSON.stringify(updatedData));
-      setMenuLevel("walls");
-      setSelectedWall("");
-      setWallSettings("");
-    }
+  const changeMeasurementV = (value) => {
+    verticalMeasurement(value);
   };
 
   const returnToWallLevel = () => {
-    setMenuLevel("walls");
-    setSelectedWall("");
-    setWallSettings("");
+    setMenuLevel("wallDetails");
+    setSelectedWallDetail("");
   };
 
   const handleKeyDown = (e) => {
-    if (e.key === ",") {
-      e.preventDefault();
-    }
+    // TODO REGEX
   };
-
-  useEffect(() => {}, [loftSelected]);
-  useEffect(() => {}, [loftType]);
-  useEffect(() => {}, [errorMessage]);
 
   return (
     <Paper sx={{ width: 300, maxWidth: "100%", p: 3 }}>
@@ -201,175 +86,81 @@ export default function CreateNewWiring(props) {
         </MenuItem>
         <Divider />
         <TextField
-          id="wallName"
-          name="wallName"
-          label="Direction (Wall name)"
+          id="dataPoints"
+          name="dataPoints"
+          label="Points w,h 500,0,1500,1000 in mm"
           fullWidth
           variant="standard"
-          defaultValue={wallSettings.wall_name}
+          type="text"
+          onKeyDown={(e) => handleKeyDown(e)}
+          defaultValue={"500,0,1500,1000"}
         />
-        <TextField
-          id="wallWidth"
-          name="wallWidth"
-          label="Width (10.5m)"
-          fullWidth
-          variant="standard"
-          type="number"
-          onKeyDown={handleKeyDown}
-          defaultValue={wallSettings !== "" ? wallSettings.wall.width : ""}
-        />
-
-        <TextField
-          id="wallHeight"
-          name="wallHeight"
-          label="Height (2.55m)"
-          fullWidth
-          variant="standard"
-          type="number"
-          onKeyDown={handleKeyDown}
-          defaultValue={wallSettings !== "" ? wallSettings.wall.height : ""}
-        />
-
+        <br /> <br />
         <Typography variant="body2" color="text.secondary">
-          Is there a loft:
+          Horizontal measurements:
         </Typography>
-
-        <FormControl component="fieldset" name="loft-true-false">
+        <FormControl component="fieldset" name="horizontal-measurements">
           <RadioGroup
-            onChange={(e) => changeLoftStatus(e.target.value)}
-            value={loftSelected}
-            id="loft"
-            aria-label="loft"
-            defaultValue={loftSelected}
+            onChange={(e) => changeMeasurementH(e.target.value)}
+            value={horizontalMeasurement}
+            id="hMeasurements"
+            aria-label="horizontal measurements"
+            defaultValue={horizontalMeasurement}
             sx={{ paddingTop: 1 }}
-            name="rbgLoft"
+            name="hMeasurements"
           >
-            <FormControlLabel value={false} control={<Radio />} label="no" />
-            <FormControlLabel value={true} control={<Radio />} label="yes" />
+            <FormControlLabel
+              value={"leftToRight"}
+              control={<Radio />}
+              label="Left to right"
+            />
+            <FormControlLabel
+              value={"rightToLeft"}
+              control={<Radio />}
+              label="Right to left"
+            />
           </RadioGroup>
         </FormControl>
-        {loftSelected === "false" ? (
-          ""
-        ) : (
-          <div>
-            <Typography variant="body2" color="text.secondary">
-              Loft Type:
-            </Typography>
-            <FormControl component="fieldset" name="loft-type">
-              <RadioGroup
-                onChange={(e) => changeLoftTypeStatus(e.target.value)}
-                value={loftType}
-                id="loft"
-                aria-label="loft"
-                defaultValue={loftType}
-                sx={{ paddingTop: 1 }}
-                name="rbgLoft"
-              >
-                <FormControlLabel
-                  value={"left"}
-                  control={<Radio />}
-                  label="Left"
-                />
-                <FormControlLabel
-                  value={"right"}
-                  control={<Radio />}
-                  label="Right"
-                />
-                <FormControlLabel
-                  value={"both"}
-                  control={<Radio />}
-                  label="Two Sided"
-                />
-              </RadioGroup>
-            </FormControl>
-            {loftType === "left" || loftType === "both" ? (
-              <div>
-                <TextField
-                  id="leftLoftStartHeight"
-                  name="leftLoftStartHeight"
-                  label="Tilted ceiling starts at (height-left)?"
-                  fullWidth
-                  variant="standard"
-                  type="number"
-                  onKeyDown={handleKeyDown}
-                  defaultValue={
-                    wallSettings !== ""
-                      ? wallSettings.wall.loftMeasurements.leftLoftStartHeight
-                      : ""
-                  }
-                />
-                <TextField
-                  id="leftCeilingStarts"
-                  name="leftCeilingStarts"
-                  label="Tilt reaches ceiling at (width-left)"
-                  fullWidth
-                  variant="standard"
-                  type="number"
-                  onKeyDown={handleKeyDown}
-                  defaultValue={
-                    wallSettings !== ""
-                      ? wallSettings.wall.loftMeasurements.leftCeilingStarts
-                      : ""
-                  }
-                />
-              </div>
-            ) : (
-              ""
-            )}
-            {loftType === "right" || loftType === "both" ? (
-              <div>
-                <TextField
-                  id="rightLoftStartHeight"
-                  name="rightLoftStartHeight"
-                  label="Tilted ceiling starts at (height-right)?"
-                  fullWidth
-                  variant="standard"
-                  type="number"
-                  onKeyDown={handleKeyDown}
-                  defaultValue={
-                    wallSettings !== ""
-                      ? wallSettings.wall.loftMeasurements.rightLoftStartHeight
-                      : ""
-                  }
-                />
-                <TextField
-                  id="rightCeilingStarts"
-                  name="rightCeilingStarts"
-                  label="Tilt reaches ceiling at (width-right)"
-                  fullWidth
-                  variant="standard"
-                  type="number"
-                  onKeyDown={handleKeyDown}
-                  defaultValue={
-                    wallSettings !== ""
-                      ? wallSettings.wall.loftMeasurements.rightCeilingStarts
-                      : ""
-                  }
-                />
-              </div>
-            ) : (
-              ""
-            )}
-            {loftType === "both" ? (
-              <TextField
-                id="midLoftWidth"
-                name="midLoftWidth"
-                label="How long is the horizontal ceiling part? (Leave 0 if it doesn't apply)"
-                fullWidth
-                variant="standard"
-                type="number"
-                onKeyDown={handleKeyDown}
-                defaultValue={
-                  wallSettings !== ""
-                    ? wallSettings.wall.loftMeasurements.midLoftWidth
-                    : ""
-                }
-              />
-            ) : (
-              ""
-            )}
-          </div>
-        )}
+        <br /> <br />
+        <Typography variant="body2" color="text.secondary">
+          Vertical measurements:
+        </Typography>
+        <FormControl component="fieldset" name="vertical-measurements">
+          <RadioGroup
+            onChange={(e) => changeMeasurementV(e.target.value)}
+            value={verticalMeasurement}
+            id="vMeasurements"
+            aria-label="vertical measurements"
+            defaultValue={verticalMeasurement}
+            sx={{ paddingTop: 1 }}
+            name="vMeasurements"
+          >
+            <FormControlLabel
+              value={"bottomToTop"}
+              control={<Radio />}
+              label="From bottom up"
+            />
+            <FormControlLabel
+              value={"topToBottom"}
+              control={<Radio />}
+              label="Top to bottom"
+            />
+          </RadioGroup>
+        </FormControl>
+        <TextField
+          id="description"
+          name="description"
+          label={
+            selectedWallDetail.count === "new"
+              ? "Description (optional)"
+              : wallData.wiring[selectedWallDetail.type].lines[
+                  selectedWallDetail.count
+                ].description
+          }
+          fullWidth
+          variant="standard"
+          defaultValue={""}
+        />
         <br />
         <br />
         <Typography variant="body2" color={red[300]}>

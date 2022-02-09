@@ -24,6 +24,7 @@ export default function BuilderMenuRoomDetails(props) {
   let selectedRoom = props.selectedRoom;
   let selectedWall = props.selectedWall;
   let setSelectedWall = props.setSelectedWall;
+  let setSelectedWallDetail = props.setSelectedWallDetail;
 
   let wallDetailsData;
   data.data.map((room) =>
@@ -47,17 +48,16 @@ export default function BuilderMenuRoomDetails(props) {
     setSelectedWall("");
   };
 
-  const goToCreateWiring = (e) => {
-    setSelectedWall(e.target.outerText);
+  const goToCreateWiring = (e, count, wiring_type) => {
+    setSelectedWall(wallDetailsData.wall_name);
+    setSelectedWallDetail({ count: count, type: wiring_type });
     setMenuLevel("createWiring");
   };
 
   const goToCreateWindow = (e) => {
-    setSelectedWall(e.target.outerText);
+    setSelectedWall(wallDetailsData.wall_name);
     setMenuLevel("createWindow");
   };
-
-  console.log(wallDetailsData);
 
   return (
     <Paper sx={{ width: 300, maxWidth: "100%" }}>
@@ -76,7 +76,7 @@ export default function BuilderMenuRoomDetails(props) {
             <ListItemIcon>
               <BoltIcon sx={{ color: orange[500] }}>electricity</BoltIcon>
             </ListItemIcon>
-            <ListItemText onClick={(e) => goToCreateWindow(e)}>
+            <ListItemText onClick={(e) => goToCreateWiring(e, i, "electric")}>
               <Typography variant="body2" color="text.secondary">
                 {`${
                   line.description === ""
@@ -88,21 +88,21 @@ export default function BuilderMenuRoomDetails(props) {
             <IconButton
               aria-label="edit"
               size="small"
-              onClick={(e) => editWindow(i, "electricity")}
+              onClick={(e) => editWiring(i, "electric")}
             >
               <EditIcon fontSize="small"></EditIcon>
             </IconButton>
             <IconButton
               aria-label="delete"
               size="small"
-              onClick={(e) => removeWindow(line.description, i, "electricity")}
+              onClick={(e) => removeWiring(line.description, i, "electric")}
             >
               <DeleteForeverRoundedIcon fontSize="small"></DeleteForeverRoundedIcon>
             </IconButton>
           </MenuItem>
         ))}
         <Divider />
-        <MenuItem onClick={(e) => goToCreateWiring()}>
+        <MenuItem onClick={(e) => goToCreateWiring(e, "new", "electric")}>
           <ListItemIcon>
             <Icon sx={{ color: green[500] }}>add_circle</Icon>
           </ListItemIcon>
@@ -120,7 +120,7 @@ export default function BuilderMenuRoomDetails(props) {
             <ListItemIcon>
               <LanguageIcon sx={{ color: cyan[500] }}>ethernet</LanguageIcon>
             </ListItemIcon>
-            <ListItemText onClick={(e) => goToCreateWindow(e)}>
+            <ListItemText onClick={(e) => goToCreateWiring(e)}>
               <Typography variant="body2" color="text.secondary">
                 {`${
                   line.description === ""
@@ -132,21 +132,21 @@ export default function BuilderMenuRoomDetails(props) {
             <IconButton
               aria-label="edit"
               size="small"
-              onClick={(e) => editWindow(i, "ethernet")}
+              onClick={(e) => editWiring(i, "ethernet")}
             >
               <EditIcon fontSize="small"></EditIcon>
             </IconButton>
             <IconButton
               aria-label="delete"
               size="small"
-              onClick={(e) => removeWindow(line.description, i, "ethernet")}
+              onClick={(e) => removeWiring(line.description, i, "ethernet")}
             >
               <DeleteForeverRoundedIcon fontSize="small"></DeleteForeverRoundedIcon>
             </IconButton>
           </MenuItem>
         ))}
         <Divider />
-        <MenuItem onClick={(e) => goToCreateWiring()}>
+        <MenuItem onClick={(e) => goToCreateWiring(e)}>
           <ListItemIcon>
             <Icon sx={{ color: green[500] }}>add_circle</Icon>
           </ListItemIcon>
@@ -164,7 +164,7 @@ export default function BuilderMenuRoomDetails(props) {
             <ListItemIcon>
               <WaterIcon sx={{ color: lightBlue[500] }}>water</WaterIcon>
             </ListItemIcon>
-            <ListItemText onClick={(e) => goToCreateWindow(e)}>
+            <ListItemText onClick={(e) => goToCreateWiring(e)}>
               <Typography variant="body2" color="text.secondary">
                 {`${
                   line.description === "" ? `Water ${i + 1}` : line.description
@@ -174,21 +174,21 @@ export default function BuilderMenuRoomDetails(props) {
             <IconButton
               aria-label="edit"
               size="small"
-              onClick={(e) => editWindow(i, "water")}
+              onClick={(e) => editWiring(i, "water")}
             >
               <EditIcon fontSize="small"></EditIcon>
             </IconButton>
             <IconButton
               aria-label="delete"
               size="small"
-              onClick={(e) => removeWindow(line.description, i, "water")}
+              onClick={(e) => removeWiring(line.description, i, "water")}
             >
               <DeleteForeverRoundedIcon fontSize="small"></DeleteForeverRoundedIcon>
             </IconButton>
           </MenuItem>
         ))}
         <Divider />
-        <MenuItem onClick={(e) => goToCreateWiring()}>
+        <MenuItem onClick={(e) => goToCreateWiring(e)}>
           <ListItemIcon>
             <Icon sx={{ color: green[500] }}>add_circle</Icon>
           </ListItemIcon>
@@ -206,7 +206,7 @@ export default function BuilderMenuRoomDetails(props) {
             <ListItemIcon>
               <BathroomIcon sx={{ color: brown[500] }}>plumbing</BathroomIcon>
             </ListItemIcon>
-            <ListItemText onClick={(e) => goToCreateWindow(e)}>
+            <ListItemText onClick={(e) => goToCreateWiring(e)}>
               <Typography variant="body2" color="text.secondary">
                 {`${
                   line.description === ""
@@ -218,21 +218,21 @@ export default function BuilderMenuRoomDetails(props) {
             <IconButton
               aria-label="edit"
               size="small"
-              onClick={(e) => editWindow(i, "plumbing")}
+              onClick={(e) => editWiring(i, "plumbing")}
             >
               <EditIcon fontSize="small"></EditIcon>
             </IconButton>
             <IconButton
               aria-label="delete"
               size="small"
-              onClick={(e) => removeWindow(line.description, i, "plumbing")}
+              onClick={(e) => removeWiring(line.description, i, "plumbing")}
             >
               <DeleteForeverRoundedIcon fontSize="small"></DeleteForeverRoundedIcon>
             </IconButton>
           </MenuItem>
         ))}
         <Divider />
-        <MenuItem onClick={(e) => goToCreateWiring()}>
+        <MenuItem onClick={(e) => goToCreateWiring(e)}>
           <ListItemIcon>
             <Icon sx={{ color: green[500] }}>add_circle</Icon>
           </ListItemIcon>
@@ -252,7 +252,11 @@ export default function BuilderMenuRoomDetails(props) {
             </ListItemIcon>
             <ListItemText onClick={(e) => goToCreateWindow(e)}>
               <Typography variant="body2" color="text.secondary">
-                {`Window ${i + 1}`}
+                {`${
+                  window.description === ""
+                    ? `Window ${i + 1}`
+                    : window.description
+                } `}
               </Typography>
             </ListItemText>
             <IconButton
