@@ -8,8 +8,8 @@ import settings from "../../assets/pageViewSettings.json";
 
 function RenderWall(data) {
   let wallDimensions = DefineStage(
-    window.innerWidth,
-    window.innerHeight,
+    window.innerWidth * 0.8,
+    window.innerHeight * 0.8,
     data.wall
   );
 
@@ -36,16 +36,16 @@ function RenderWall(data) {
       >
         <Layer>
           <CreateSideView
-            windowWidth={window.innerWidth}
-            windowHeight={window.innerHeight}
+            windowWidth={window.innerWidth * 0.8}
+            windowHeight={window.innerHeight * 0.8}
             wall={data.wall}
             settings={settings}
             ratio={0.9}
           />
           {data.windows.map((singleWindow, i) => (
             <DrawWindow
-              windowWidth={window.innerWidth}
-              windowHeight={window.innerHeight}
+              windowWidth={window.innerWidth * 0.8}
+              windowHeight={window.innerHeight * 0.8}
               wall={data.wall}
               singleWindow={singleWindow}
               i={i}
@@ -54,8 +54,8 @@ function RenderWall(data) {
           ))}
           {data.wiring.electric.lines.map((singleLine, i) => (
             <DrawWiring
-              windowWidth={window.innerWidth}
-              windowHeight={window.innerHeight}
+              windowWidth={window.innerWidth * 0.8}
+              windowHeight={window.innerHeight * 0.8}
               wall={data.wall}
               strokeWidth={data.wiring.electric.strokeWidth}
               stroke={data.wiring.electric.stroke}
@@ -69,8 +69,8 @@ function RenderWall(data) {
             singleLine.harness.draw === true ? (
               singleLine.harness.harnessArray.map((singleHarness, i) => (
                 <DrawHarness
-                  windowWidth={window.innerWidth}
-                  windowHeight={window.innerHeight}
+                  windowWidth={window.innerWidth * 0.8}
+                  windowHeight={window.innerHeight * 0.8}
                   wall={data.wall}
                   singleHarness={singleHarness}
                   i={i}
@@ -84,8 +84,8 @@ function RenderWall(data) {
           )}
           {data.wiring.water.lines.map((singleLine, i) => (
             <DrawWiring
-              windowWidth={window.innerWidth}
-              windowHeight={window.innerHeight}
+              windowWidth={window.innerWidth * 0.8}
+              windowHeight={window.innerHeight * 0.8}
               wall={data.wall}
               strokeWidth={data.wiring.water.strokeWidth}
               stroke={data.wiring.water.stroke}
@@ -99,8 +99,8 @@ function RenderWall(data) {
             singleLine.harness.draw === true ? (
               singleLine.harness.harnessArray.map((singleHarness, i) => (
                 <DrawHarness
-                  windowWidth={window.innerWidth}
-                  windowHeight={window.innerHeight}
+                  windowWidth={window.innerWidth * 0.8}
+                  windowHeight={window.innerHeight * 0.8}
                   wall={data.wall}
                   singleHarness={singleHarness}
                   i={i}
@@ -114,8 +114,8 @@ function RenderWall(data) {
           )}
           {data.wiring.ethernet.lines.map((singleLine, i) => (
             <DrawWiring
-              windowWidth={window.innerWidth}
-              windowHeight={window.innerHeight}
+              windowWidth={window.innerWidth * 0.8}
+              windowHeight={window.innerHeight * 0.8}
               wall={data.wall}
               strokeWidth={data.wiring.ethernet.strokeWidth}
               stroke={data.wiring.ethernet.stroke}
@@ -129,8 +129,8 @@ function RenderWall(data) {
             singleLine.harness.draw === true ? (
               singleLine.harness.harnessArray.map((singleHarness, i) => (
                 <DrawHarness
-                  windowWidth={window.innerWidth}
-                  windowHeight={window.innerHeight}
+                  windowWidth={window.innerWidth * 0.8}
+                  windowHeight={window.innerHeight * 0.8}
                   wall={data.wall}
                   singleHarness={singleHarness}
                   i={i}

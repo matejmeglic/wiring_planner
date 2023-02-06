@@ -34,7 +34,7 @@ function CalculateLoftPoints(
       loftMeasurements.leftCeilingStarts * oneMeter,
       state.wallHeight,
       (loftMeasurements.leftCeilingStarts + loftMeasurements.midLoftWidth) *
-        oneMeter,
+      oneMeter,
       state.wallHeight,
       state.wallWidth,
       loftMeasurements.rightLoftStartHeight * oneMeter,
@@ -89,8 +89,22 @@ function CalculateLoftPoints(
       0,
     ];
   }
-
+  else if (state.loftLeft === false && state.loftRight === false) {
+    points = [
+      0,
+      0,
+      0,
+      state.wallHeight,
+      state.wallWidth,
+      state.wallHeight,
+      state.wallWidth,
+      0,
+      0,
+      0,
+    ];
+  }
   return points;
 }
 
 export default CalculateLoftPoints;
+

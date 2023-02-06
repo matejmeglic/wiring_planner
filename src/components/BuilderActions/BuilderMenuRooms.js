@@ -21,6 +21,9 @@ export default function BuilderMenuRooms(props) {
   let setData = props.setData;
   let setMenuLevel = props.setMenuLevel;
   let setSelectedRoom = props.setSelectedRoom;
+  let setSelectedWall = props.setSelectedRoom;
+  let setSelectedSettings = props.setSelectedSettings;
+  let setWallSettings = props.setWallSettings;
 
   const [newRoomClick, setNewRoomClick] = useState(false);
   const [editRoomClick, setEditRoomClick] = useState(false);
@@ -103,7 +106,7 @@ export default function BuilderMenuRooms(props) {
       <MenuList>
         {data.data.map((room, i) =>
           editRoomClick === false ||
-          (editRoomClick === true && editRoomNo !== i) ? (
+            (editRoomClick === true && editRoomNo !== i) ? (
             <MenuItem key={i}>
               <ListItemText onClick={(e) => goToRoomDetails(e)}>
                 <Typography variant="body2" color="text.secondary">
@@ -200,12 +203,12 @@ export default function BuilderMenuRooms(props) {
       </MenuList>
       {deleteDialog === true
         ? DeleteDialog(
-            deleteDialog,
-            setDeleteDialog,
-            data,
-            deleteDecision,
-            setData
-          )
+          deleteDialog,
+          setDeleteDialog,
+          data,
+          deleteDecision,
+          setData
+        )
         : ""}
     </Paper>
   );

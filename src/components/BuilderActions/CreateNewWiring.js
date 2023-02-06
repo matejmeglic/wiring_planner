@@ -32,36 +32,70 @@ export default function CreateNewWiring(props) {
   data.data.map((room) =>
     room.room_name === selectedRoom
       ? room.walls.map((wall) =>
-          wall.wall_name === selectedWall ? (wallData = wall) : ""
-        )
+        wall.wall_name === selectedWall ? (wallData = wall) : ""
+      )
       : ""
   );
 
-  console.log(wallData.wiring.electric);
-  console.log(selectedWallDetail);
+  let specificWiring = wallData.wiring[selectedWallDetail.type].lines[selectedWallDetail.count]
 
   const [errorMessage, setErrorMessage] = useState("");
   const [horizontalMeasurement, setHorizontalMeasurement] = useState(
     selectedWallDetail.count === "new"
       ? "leftToRight"
       : wallData.wiring[selectedWallDetail.type].lines[selectedWallDetail.count]
-          .orientationHorizontal
+        .orientationHorizontal
   );
   const [verticalMeasurement, setVerticalMeasurement] = useState(
     selectedWallDetail.count === "new"
       ? "bottomToTop"
       : wallData.wiring[selectedWallDetail.type].lines[selectedWallDetail.count]
-          .orientationVertical
+        .orientationVertical
   );
 
-  const updateData = () => {};
+  const updateData = () => {
+    let updatedData = data;
+
+    let newWiringSettings = {}
+
+    newWiringSettings.description = document.getElementById("description").value;
+    newWiringSettings.dataPoints = document.getElementById("dataPoints").value.split(',');
+    newWiringSettings.orientationHorizontal = horizontalMeasurement
+    newWiringSettings.orientationVertical = verticalMeasurement
+    newWiringSettings.harness = { "draw": false, "harnessArray": [] }
+
+    /*     console.log(newWiringSettings)
+        console.log(selectedWall) */
+
+    /*   console.log(updatedData)
+      console.log(newWiringSettings) */
+
+    updatedData.data.map((room) =>
+      room.room_name === selectedRoom
+        ? room.walls.map((wall) =>
+          wall.wall_name === selectedWall ?
+            selectedWallDetail.count === "new" ?
+              wall.wiring[selectedWallDetail.type].lines.push(newWiringSettings)
+              : wall.wiring[selectedWallDetail.type].lines[selectedWallDetail.count] = newWiringSettings
+            : ""
+        )
+        : ""
+    );
+
+    /*     console.log(updatedData.data[0].walls[0].wiring.electric.lines) */
+    setData((prev) => ({ ...prev, data: updatedData.data }));
+    localStorage.setItem("savedData_MM", JSON.stringify(updatedData));
+    setMenuLevel("wallDetails");
+    setSelectedWallDetail("");
+  }
+
 
   const changeMeasurementH = (value) => {
     setHorizontalMeasurement(value);
   };
 
   const changeMeasurementV = (value) => {
-    verticalMeasurement(value);
+    setVerticalMeasurement(value);
   };
 
   const returnToWallLevel = () => {
@@ -93,7 +127,7 @@ export default function CreateNewWiring(props) {
           variant="standard"
           type="text"
           onKeyDown={(e) => handleKeyDown(e)}
-          defaultValue={"500,0,1500,1000"}
+          defaultValue={selectedWallDetail.count === "new" ? "500,0,1500,1000" : specificWiring.dataPoints}
         />
         <br /> <br />
         <Typography variant="body2" color="text.secondary">
@@ -150,16 +184,12 @@ export default function CreateNewWiring(props) {
         <TextField
           id="description"
           name="description"
-          label={
-            selectedWallDetail.count === "new"
-              ? "Description (optional)"
-              : wallData.wiring[selectedWallDetail.type].lines[
-                  selectedWallDetail.count
-                ].description
+          defaultValue={
+            selectedWallDetail.count === "new" ? "" : specificWiring.description
           }
           fullWidth
           variant="standard"
-          defaultValue={""}
+          label="Description"
         />
         <br />
         <br />

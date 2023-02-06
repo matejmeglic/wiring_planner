@@ -8,6 +8,8 @@ import CreateNewHarness from "../BuilderActions/CreateNewHarness";
 import CreateNewWindow from "../BuilderActions/CreateNewWindow";
 
 const LeftMenu = (
+  menuLevel,
+  setMenuLevel,
   data,
   setData,
   setWalls,
@@ -18,10 +20,10 @@ const LeftMenu = (
   selectedWallDetail,
   setSelectedWallDetail
 ) => {
-  const [menuLevel, setMenuLevel] = useState("rooms");
+
   const [wallSettings, setWallSettings] = useState("");
 
-  useEffect(() => {}, [menuLevel]);
+  useEffect(() => { }, [menuLevel]);
 
   if (data === "nodata") {
     return "";
@@ -31,8 +33,12 @@ const LeftMenu = (
         data={data}
         setData={setData}
         setMenuLevel={setMenuLevel}
+        selectedRoom={selectedRoom}
         setSelectedRoom={setSelectedRoom}
+        selectedWall={selectedWall}
         setSelectedWall={setSelectedWall}
+        wallSettings={wallSettings}
+        setWallSettings={setWallSettings}
       />
     );
   } else if (menuLevel === "walls") {

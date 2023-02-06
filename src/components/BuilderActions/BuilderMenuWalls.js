@@ -104,6 +104,8 @@ export default function BuilderMenuWalls(props) {
     setSelectedWall("");
   };
 
+  console.log("AAA")
+  console.log(data)
   return (
     <Paper sx={{ width: 300, maxWidth: "100%" }}>
       <MenuList>
@@ -155,12 +157,12 @@ export default function BuilderMenuWalls(props) {
       </MenuList>
       {deleteDialog === true
         ? DeleteDialog(
-            deleteDialog,
-            setDeleteDialog,
-            data,
-            deleteDecision,
-            setData
-          )
+          deleteDialog,
+          setDeleteDialog,
+          data,
+          deleteDecision,
+          setData
+        )
         : ""}
     </Paper>
   );

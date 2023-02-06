@@ -12,8 +12,8 @@ class CreateSideView extends React.Component {
     canvasWallWidth: Round(this.props.windowWidth * this.props.ratio),
     canvasWallHeight: Round(
       (this.props.wall.height / this.props.wall.width) *
-        this.props.windowWidth *
-        this.props.ratio
+      this.props.windowWidth *
+      this.props.ratio
     ),
     canvasOneMeter: Round(
       (this.props.windowWidth * this.props.ratio) / this.props.wall.width

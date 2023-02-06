@@ -44,14 +44,14 @@ export default function CreateNewWall(props) {
         wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0 &&
         wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
         wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
-      ? "both"
-      : wallSettings.wall.loftMeasurements.leftCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0
-      ? "left"
-      : wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
-      ? "right"
-      : "left"
+        ? "both"
+        : wallSettings.wall.loftMeasurements.leftCeilingStarts > 0 &&
+          wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0
+          ? "left"
+          : wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
+            wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
+            ? "right"
+            : "left"
   );
 
   const changeLoftStatus = (value) => {
@@ -177,7 +177,7 @@ export default function CreateNewWall(props) {
 
   const updateData = () => {
     let updatedData = data;
-
+    console.log("BBB")
     let wallObject = fetchWallObjectData();
 
     if (wallObject === "error") {
@@ -191,10 +191,10 @@ export default function CreateNewWall(props) {
         updatedData.data.map((room, i) =>
           room.room_name === selectedRoom
             ? updatedData.data[i].walls.map((wall, j) =>
-                wall.wall_name === wallSettings.wall_name
-                  ? updatedData.data[0].walls.splice(j, 1, wallObject)
-                  : ""
-              )
+              wall.wall_name === wallSettings.wall_name
+                ? updatedData.data[0].walls.splice(j, 1, wallObject)
+                : ""
+            )
             : ""
         );
       }
@@ -203,6 +203,7 @@ export default function CreateNewWall(props) {
       setMenuLevel("walls");
       setSelectedWall("");
       setWallSettings("");
+      console.log(updatedData)
     }
   };
 
@@ -218,9 +219,9 @@ export default function CreateNewWall(props) {
     }
   };
 
-  useEffect(() => {}, [loftSelected]);
-  useEffect(() => {}, [loftType]);
-  useEffect(() => {}, [errorMessage]);
+  useEffect(() => { }, [loftSelected]);
+  useEffect(() => { }, [loftType]);
+  useEffect(() => { }, [errorMessage]);
 
   return (
     <Paper sx={{ width: 300, maxWidth: "100%", p: 3 }}>
