@@ -10,3 +10,4 @@
 4h multi-level menu (walls, wallSettings)
 5h wall handling+errorhandling + wallDetails menu
 2h wiring submenu
+8h rewrite up to working model (there is an edit walls bug)
