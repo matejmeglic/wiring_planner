@@ -52,6 +52,18 @@ export default function CreateNewWindow(props) {
       : specificWiring.hinges
   );
 
+  const [innerDoorValue, setInnerDoorValue] = useState(
+    selectedWallDetail.count === "new"
+      ? true
+      : specificWiring.innerDoor
+  );
+
+  const [doorKnobOrientationValue, setIDoorKnobOrientationValue] = useState(
+    selectedWallDetail.count === "new"
+      ? "left"
+      : specificWiring.doorKnob
+  );
+
   const updateData = () => {
     let updatedData = data;
 
@@ -67,8 +79,8 @@ export default function CreateNewWindow(props) {
     newWiringSettings.unitOfMeasure = "mm"
     newWiringSettings.hinges = hingesValue
     newWiringSettings.renderShelf = true
-    newWiringSettings.innerDoor = false
-    newWiringSettings.doorKnob = "left"
+    newWiringSettings.innerDoor = innerDoorValue
+    newWiringSettings.doorKnob = doorKnobOrientationValue
 
     updatedData.data.map((room) =>
       room.room_name === selectedRoom
@@ -97,6 +109,14 @@ export default function CreateNewWindow(props) {
 
   const changeHingesValue = (value) => {
     setHingesValue(value);
+  };
+
+  const changeInnerDoorValue = (value) => {
+    setInnerDoorValue(value);
+  };
+
+  const changeDoorKnobOrientationValue = (value) => {
+    setIDoorKnobOrientationValue(value);
   };
 
   const returnToWallLevel = () => {
@@ -233,8 +253,58 @@ export default function CreateNewWindow(props) {
             />
           </RadioGroup>
         </FormControl>
-
-
+        <Typography variant="body2" color="text.secondary">
+          Door type:
+        </Typography>
+        <FormControl component="fieldset" name="horizontal-measurements">
+          <RadioGroup
+            onChange={(e) => changeInnerDoorValue(e.target.value)}
+            value={innerDoorValue}
+            id="innerDoor"
+            aria-label="innerDoor"
+            label="Door type"
+            defaultValue={innerDoorValue}
+            sx={{ paddingTop: 1 }}
+            name="innerDoor"
+          >
+            <FormControlLabel
+              value={true}
+              control={<Radio />}
+              label="Inner"
+            />
+            <FormControlLabel
+              value={false}
+              control={<Radio />}
+              label="Outer"
+            />
+          </RadioGroup>
+        </FormControl>
+        <Typography variant="body2" color="text.secondary">
+          Door knob orientation:
+        </Typography>
+        <FormControl component="fieldset" name="horizontal-measurements">
+          <RadioGroup
+            onChange={(e) => changeDoorKnobOrientationValue(e.target.value)}
+            value={doorKnobOrientationValue}
+            id="doorKnobOrientation"
+            aria-label="doorKnobOrientation"
+            label="Door Knob Orientation"
+            defaultValue={doorKnobOrientationValue}
+            sx={{ paddingTop: 1 }}
+            name="doorKnobOrientation"
+          >
+            <FormControlLabel
+              value={"left"}
+              control={<Radio />}
+              label="left"
+            />
+            <FormControlLabel
+              value={"right"}
+              control={<Radio />}
+              label="right"
+            />
+          </RadioGroup>
+        </FormControl>
 
 
         <br />

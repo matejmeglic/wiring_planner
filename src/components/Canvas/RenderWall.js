@@ -5,6 +5,7 @@ import DrawWiring from "../../components/Canvas/DrawWiring";
 import DrawHarness from "../../components/Canvas/DrawHarness";
 import { Stage, Layer } from "react-konva";
 import settings from "../../assets/pageViewSettings.json";
+import CreateBackground from "../../components/Canvas/CreateBackground";
 
 function RenderWall(data) {
   let wallDimensions = DefineStage(
@@ -12,6 +13,7 @@ function RenderWall(data) {
     window.innerHeight * 0.8,
     data.wall
   );
+
 
   return (
     <div>
@@ -33,7 +35,29 @@ function RenderWall(data) {
           wallDimensions.canvasWallHeight +
           settings.canvasOffsetHeight * settings.canvasOffsetPercentage
         }
+
+
       >
+
+        <Layer>
+          <CreateBackground
+            width={
+              wallDimensions.canvasWallWidth +
+              settings.canvasOffsetWidth * settings.canvasOffsetPercentage
+            }
+            height={
+              wallDimensions.canvasWallHeight +
+              settings.canvasOffsetHeight * settings.canvasOffsetPercentage
+            }
+            scaleY={-1}
+            y={
+              wallDimensions.canvasWallHeight +
+              settings.canvasOffsetHeight * settings.canvasOffsetPercentage
+            }
+
+
+          />
+        </Layer>
         <Layer>
           <CreateSideView
             windowWidth={window.innerWidth * 0.8}
@@ -144,7 +168,7 @@ function RenderWall(data) {
           )}
         </Layer>
       </Stage>
-    </div>
+    </div >
   );
 }
 
