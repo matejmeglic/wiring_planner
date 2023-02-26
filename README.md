@@ -17,7 +17,9 @@ This program runs on localhost and utilizes local storage to produce, save and e
 ### Room for improvement:
 - state management is somehow broken, the changes are not immediate (the data is stored, but sometimes one needs a reload)
 - there is a support for multiple harnesses, but currently the app only allows a single entry per wiring line (in JSON you can create multiple ones)
-- major code revamp (the author was learning react hooks and overcomplicated the codebase, then left some quirks in there)
+- major code revamp (the author was learning react hooks and overcomplicated the codebase, then left some quirks and unused variables in there)
+- there are loads of console.log messages that relate to the konvajs canvas problems where key are duplicating
+- it looks like changing window tint from inner (gray) to outer (blue) doesn't work
 
 
 ### TOTAL HOURS V1 : 71

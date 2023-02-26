@@ -7,7 +7,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import SendIcon from "@mui/icons-material/Send";
 import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
@@ -21,7 +20,7 @@ export default function CreateNewWall(props) {
   let setData = props.setData;
   let setMenuLevel = props.setMenuLevel;
   let selectedRoom = props.selectedRoom;
-  let setSelectedRoom = props.setSelectedRoom;
+  /*   let setSelectedRoom = props.setSelectedRoom; */
   let setSelectedWall = props.setSelectedWall;
   let wallSettings = props.wallSettings;
   let setWallSettings = props.setWallSettings;

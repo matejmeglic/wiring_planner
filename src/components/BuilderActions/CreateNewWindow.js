@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
@@ -7,13 +7,11 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import SendIcon from "@mui/icons-material/Send";
 import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
-import { red } from "@mui/material/colors";
 
 export default function CreateNewWindow(props) {
 
@@ -22,10 +20,10 @@ export default function CreateNewWindow(props) {
   let setMenuLevel = props.setMenuLevel;
   let selectedRoom = props.selectedRoom;
   let selectedWall = props.selectedWall;
-  let setSelectedRoom = props.setSelectedRoom;
-  let setSelectedWall = props.setSelectedWall;
-  let wallSettings = props.wallSettings;
-  let setWallSettings = props.setWallSettings;
+  /*   let setSelectedRoom = props.setSelectedRoom;
+    let setSelectedWall = props.setSelectedWall;
+    let wallSettings = props.wallSettings;
+    let setWallSettings = props.setWallSettings; */
   let selectedWallDetail = props.selectedWallDetail;
   let setSelectedWallDetail = props.setSelectedWallDetail;
 
@@ -40,7 +38,7 @@ export default function CreateNewWindow(props) {
 
   let specificWiring = wallData.windows[selectedWallDetail.count]
 
-  const [errorMessage, setErrorMessage] = useState("");
+  /*   const [errorMessage, setErrorMessage] = useState(""); */
   const [horizontalMeasurement, setHorizontalMeasurement] = useState(
     selectedWallDetail.count === "new"
       ? "leftToRight"
@@ -309,9 +307,9 @@ export default function CreateNewWindow(props) {
 
         <br />
         <br />
-        <Typography variant="body2" color={red[300]}>
+        {/*         <Typography variant="body2" color={red[300]}>
           {errorMessage} <br />
-        </Typography>
+        </Typography> */}
         <Button
           variant="outlined"
           endIcon={<SendIcon />}

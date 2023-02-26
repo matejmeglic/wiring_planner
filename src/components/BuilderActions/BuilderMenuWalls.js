@@ -6,11 +6,8 @@ import MenuItem from "@mui/material/MenuItem";
 import ListItemText from "@mui/material/ListItemText";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import Typography from "@mui/material/Typography";
-import { green, red, grey } from "@mui/material/colors";
+import { green } from "@mui/material/colors";
 import Icon from "@mui/material/Icon";
-import TextField from "@mui/material/TextField";
-import CheckIcon from "@mui/icons-material/Check";
-import CloseIcon from "@mui/icons-material/Close";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
 import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
@@ -23,7 +20,7 @@ export default function BuilderMenuWalls(props) {
   let selectedRoom = props.selectedRoom;
   let setSelectedRoom = props.setSelectedRoom;
   let setSelectedWall = props.setSelectedWall;
-  let wallSettings = props.wallSettings;
+  /*   let wallSettings = props.wallSettings; */
   let setWallSettings = props.setWallSettings;
 
   let wallData = [];
@@ -33,11 +30,11 @@ export default function BuilderMenuWalls(props) {
       : ""
   );
 
-  const [editWallClick, setEditWallClick] = useState(false);
-  const [editWallNo, setEditWallNo] = useState(false);
+  /*   const [editWallClick, setEditWallClick] = useState(false);
+    const [editWallNo, setEditWallNo] = useState(false); */
   const [deleteDialog, setDeleteDialog] = useState(false);
   const [deleteDecision, setDeleteDecision] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  /*   const [errorMessage, setErrorMessage] = useState(""); */
 
   const editWallOnClick = (i) => {
     setWallSettings(wallData[i]);
@@ -50,43 +47,43 @@ export default function BuilderMenuWalls(props) {
     setDeleteDialog(true);
   };
 
-  const editRoom = (editWallName) => {
-    let updatedData = data;
-    let newWall = [];
-    let updatedWalls = [];
-    let wallAlreadyExists = false;
-
-    updatedData.data.map((wall) =>
-      wall.wall_name === document.getElementById("editWallName").value
-        ? (wallAlreadyExists = true)
-        : ""
-    );
-
-    if (wallAlreadyExists === true) {
-      setErrorMessage("Wall already exists!");
-    } else {
+  /*   const editRoom = (editWallName) => {
+      let updatedData = data;
+      let newWall = [];
+      let updatedWalls = [];
+      let wallAlreadyExists = false;
+  
       updatedData.data.map((wall) =>
-        wall.wall_name !== editWallName ? "" : newWall.push(wall)
+        wall.wall_name === document.getElementById("editWallName").value
+          ? (wallAlreadyExists = true)
+          : ""
       );
-      newWall[0].wall_name = document.getElementById("editWallName").value;
-      updatedData.data.map((wall) =>
-        wall.wall_name !== editWallName
-          ? updatedWalls.push(wall)
-          : updatedWalls.push(newWall[0])
-      );
-      updatedData.data = updatedWalls;
+  
+      if (wallAlreadyExists === true) {
+        setErrorMessage("Wall already exists!");
+      } else {
+        updatedData.data.map((wall) =>
+          wall.wall_name !== editWallName ? "" : newWall.push(wall)
+        );
+        newWall[0].wall_name = document.getElementById("editWallName").value;
+        updatedData.data.map((wall) =>
+          wall.wall_name !== editWallName
+            ? updatedWalls.push(wall)
+            : updatedWalls.push(newWall[0])
+        );
+        updatedData.data = updatedWalls;
+  
+        setData((prev) => ({ ...prev, data: updatedWalls }));
+        localStorage.setItem("savedData_MM", JSON.stringify(updatedData));
+        setEditWallClick(false);
+        setErrorMessage("");
+      }
+    }; */
 
-      setData((prev) => ({ ...prev, data: updatedWalls }));
-      localStorage.setItem("savedData_MM", JSON.stringify(updatedData));
+  /*   const closeEditWall = () => {
       setEditWallClick(false);
       setErrorMessage("");
-    }
-  };
-
-  const closeEditWall = () => {
-    setEditWallClick(false);
-    setErrorMessage("");
-  };
+    }; */
 
   const goToWallDetails = (e) => {
     setSelectedWall(e.target.outerText);

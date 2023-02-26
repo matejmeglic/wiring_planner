@@ -21,9 +21,6 @@ export default function BuilderMenuRooms(props) {
   let setData = props.setData;
   let setMenuLevel = props.setMenuLevel;
   let setSelectedRoom = props.setSelectedRoom;
-  let setSelectedWall = props.setSelectedRoom;
-  let setSelectedSettings = props.setSelectedSettings;
-  let setWallSettings = props.setWallSettings;
 
   const [newRoomClick, setNewRoomClick] = useState(false);
   const [editRoomClick, setEditRoomClick] = useState(false);

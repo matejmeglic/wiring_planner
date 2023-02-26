@@ -1,6 +1,5 @@
 import React from "react";
 import { Line } from "react-konva";
-import Box from "@mui/material/Box";
 import CalculateLoftPoints from "./CalculateLoftPoints";
 
 class DrawWall extends React.Component {

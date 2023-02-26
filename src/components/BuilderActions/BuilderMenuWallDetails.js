@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Paper from "@mui/material/Paper";
 import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
@@ -7,7 +7,6 @@ import ListItemText from "@mui/material/ListItemText";
 import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import DeleteForeverRoundedIcon from "@mui/icons-material/DeleteForeverRounded";
-import EditIcon from "@mui/icons-material/Edit";
 import IconButton from "@mui/material/IconButton";
 import Icon from "@mui/material/Icon";
 import { green, lightBlue, orange, brown, cyan } from "@mui/material/colors";
@@ -25,10 +24,6 @@ export default function BuilderMenuRoomDetails(props) {
   let selectedWall = props.selectedWall;
   let setSelectedWall = props.setSelectedWall;
   let setSelectedWallDetail = props.setSelectedWallDetail;
-
-  const [deleteDialog, setDeleteDialog] = useState(false);
-  const [deleteDecision, setDeleteDecision] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
   let wallDetailsData;
   data.data.map((room) =>

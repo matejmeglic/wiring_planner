@@ -7,7 +7,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Button from "@mui/material/Button";
-import Box from "@mui/material/Box";
 import SendIcon from "@mui/icons-material/Send";
 import MenuList from "@mui/material/MenuList";
 import MenuItem from "@mui/material/MenuItem";
@@ -20,7 +19,7 @@ export default function CreateNewHarness(props) {
   let setData = props.setData;
   let setMenuLevel = props.setMenuLevel;
   let selectedRoom = props.selectedRoom;
-  let setSelectedRoom = props.setSelectedRoom;
+  /*   let setSelectedRoom = props.setSelectedRoom; */
   let setSelectedWall = props.setSelectedWall;
   let wallSettings = props.wallSettings;
   let setWallSettings = props.setWallSettings;
@@ -43,14 +42,14 @@ export default function CreateNewHarness(props) {
         wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0 &&
         wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
         wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
-      ? "both"
-      : wallSettings.wall.loftMeasurements.leftCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0
-      ? "left"
-      : wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
-        wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
-      ? "right"
-      : "left"
+        ? "both"
+        : wallSettings.wall.loftMeasurements.leftCeilingStarts > 0 &&
+          wallSettings.wall.loftMeasurements.leftLoftStartHeight > 0
+          ? "left"
+          : wallSettings.wall.loftMeasurements.rightCeilingStarts > 0 &&
+            wallSettings.wall.loftMeasurements.rightLoftStartHeight > 0
+            ? "right"
+            : "left"
   );
 
   const changeLoftStatus = (value) => {
@@ -157,10 +156,10 @@ export default function CreateNewHarness(props) {
         updatedData.data.map((room, i) =>
           room.room_name === selectedRoom
             ? updatedData.data[i].walls.map((wall, j) =>
-                wall.wall_name === wallSettings.wall_name
-                  ? updatedData.data[0].walls.splice(j, 1, wallObject)
-                  : ""
-              )
+              wall.wall_name === wallSettings.wall_name
+                ? updatedData.data[0].walls.splice(j, 1, wallObject)
+                : ""
+            )
             : ""
         );
       }
@@ -184,9 +183,9 @@ export default function CreateNewHarness(props) {
     }
   };
 
-  useEffect(() => {}, [loftSelected]);
-  useEffect(() => {}, [loftType]);
-  useEffect(() => {}, [errorMessage]);
+  useEffect(() => { }, [loftSelected]);
+  useEffect(() => { }, [loftType]);
+  useEffect(() => { }, [errorMessage]);
 
   return (
     <Paper sx={{ width: 300, maxWidth: "100%", p: 3 }}>

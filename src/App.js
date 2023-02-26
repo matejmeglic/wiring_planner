@@ -22,7 +22,7 @@ const App = () => {
   const [menuLevel, setMenuLevel] = useState("rooms");
 
   const scrnArea = useRef("screenshot-area");
-  const { image, takeScreenshot, clear } = useScreenshot({ ref: scrnArea });
+  const { image, takeScreenshot } = useScreenshot({ ref: scrnArea });
 
   const downloadImage = () => {
     takeScreenshot()
@@ -33,9 +33,6 @@ const App = () => {
           :
           saveAs(document.getElementById("takenPic").src, `${NewDate()}_${selectedRoom}_${selectedWall}.png`)
     }, 3000);
-    //window.URL.createObjectURL(new Blob(image, { type: "image/png" }))
-    //takenPic
-    // Put your image url here.
   }
 
   useEffect(() => { }, [data]);
@@ -74,7 +71,7 @@ const App = () => {
 
         {image && (
           <div className="imageContainer">
-            <img id="takenPic" width={800} src={image} />
+            <img id="takenPic" alt="screenshot of canvas" width={800} src={image} />
           </div>
         )}
 
