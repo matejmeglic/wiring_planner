@@ -238,6 +238,7 @@ export default function CreateNewWiring(props) {
           label="Description"
         />
 
+        {/* HARNESS DOESN'T WORK - DESCOPED */}
         <br /> <br />
         <Typography variant="body2" color="text.secondary">
           Harness:

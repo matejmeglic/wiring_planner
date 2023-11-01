@@ -113,28 +113,28 @@ function Navigation(data) {
       </Toolbar>
       {openDemoDataDialog === true
         ? DemoDataDialog(
-            openDemoDataDialog,
-            setOpenDemoDataDialog,
-            openDemoDataDialogConfirmationScreen,
-            setOpenDemoDataDialogConfirmationScreen,
-            data.project_name
-          )
+          openDemoDataDialog,
+          setOpenDemoDataDialog,
+          openDemoDataDialogConfirmationScreen,
+          setOpenDemoDataDialogConfirmationScreen,
+          data.project_name
+        )
         : ""}
       {openUploadDialog === true
         ? UploadDataDialog(
-            openUploadDialog,
-            setOpenUploadDialog,
-            openUploadDialogConfirmationScreen,
-            setOpenUploadDialogConfirmationScreen,
-            data.project_name
-          )
+          openUploadDialog,
+          setOpenUploadDialog,
+          openUploadDialogConfirmationScreen,
+          setOpenUploadDialogConfirmationScreen,
+          data.project_name
+        )
         : ""}
       {openCreateProjectDialog === true
         ? CreateProjectDialog(
-            openCreateProjectDialog,
-            setOpenCreateProjectDialog,
-            data.project_name
-          )
+          openCreateProjectDialog,
+          setOpenCreateProjectDialog,
+          data.project_name
+        )
         : ""}
     </AppBar>
   );

@@ -20,6 +20,8 @@ This program runs on localhost and utilizes local storage to produce, save and e
 - major code revamp (the author was learning react hooks and overcomplicated the codebase, then left some quirks and unused variables in there)
 - there are loads of console.log messages that relate to the konvajs canvas problems where key are duplicating
 - it looks like changing window tint from inner (gray) to outer (blue) doesn't work
+- harnesses don't work and are descoped
+- editing installations doesn't rerender (scope problem, didn't solve atm)
 
 
 ### TOTAL HOURS V1 : 71
@@ -37,3 +39,4 @@ This program runs on localhost and utilizes local storage to produce, save and e
 - 2h wiring submenu
 - 8h rewrite up to working model (there is an edit walls bug)
 - 4h polishing up, adding screenshot feature and basic testing
+- 1h polishing up, bugfixing (plumbing renders, loft works if the start point is 0.01 or above)

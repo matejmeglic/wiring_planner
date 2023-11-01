@@ -166,6 +166,36 @@ function RenderWall(data) {
               <div></div>
             )
           )}
+          {data.wiring.plumbing.lines.map((singleLine, i) => (
+            <DrawWiring
+              windowWidth={window.innerWidth * 0.8}
+              windowHeight={window.innerHeight * 0.8}
+              wall={data.wall}
+              strokeWidth={data.wiring.electric.strokeWidth}
+              stroke={data.wiring.plumbing.stroke}
+              singleLine={singleLine}
+              i={i}
+              iKey="el"
+              settings={settings}
+            />
+          ))}
+          {data.wiring.plumbing.lines.map((singleLine) =>
+            singleLine.harness.draw === true ? (
+              singleLine.harness.harnessArray.map((singleHarness, i) => (
+                <DrawHarness
+                  windowWidth={window.innerWidth * 0.8}
+                  windowHeight={window.innerHeight * 0.8}
+                  wall={data.wall}
+                  singleHarness={singleHarness}
+                  i={i}
+                  iKey="h"
+                  settings={settings}
+                />
+              ))
+            ) : (
+              <div></div>
+            )
+          )}
         </Layer>
       </Stage>
     </div >

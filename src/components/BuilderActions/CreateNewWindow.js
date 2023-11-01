@@ -52,7 +52,7 @@ export default function CreateNewWindow(props) {
 
   const [innerDoorValue, setInnerDoorValue] = useState(
     selectedWallDetail.count === "new"
-      ? true
+      ? false
       : specificWiring.innerDoor
   );
 
@@ -66,7 +66,6 @@ export default function CreateNewWindow(props) {
     let updatedData = data;
 
     let newWiringSettings = {}
-
     newWiringSettings.description = document.getElementById("description").value;
     newWiringSettings.windowWidth = document.getElementById("windoWidth").value;
     newWiringSettings.windowHeight = document.getElementById("windoHeight").value;
@@ -77,8 +76,10 @@ export default function CreateNewWindow(props) {
     newWiringSettings.unitOfMeasure = "mm"
     newWiringSettings.hinges = hingesValue
     newWiringSettings.renderShelf = true
-    newWiringSettings.innerDoor = innerDoorValue
+    newWiringSettings.innerDoor = Boolean(innerDoorValue)
     newWiringSettings.doorKnob = doorKnobOrientationValue
+    console.log('BBB')
+    console.log(innerDoorValue)
 
     updatedData.data.map((room) =>
       room.room_name === selectedRoom
@@ -110,7 +111,8 @@ export default function CreateNewWindow(props) {
   };
 
   const changeInnerDoorValue = (value) => {
-    setInnerDoorValue(value);
+    setInnerDoorValue(!innerDoorValue);
+    console.log(innerDoorValue)
   };
 
   const changeDoorKnobOrientationValue = (value) => {
@@ -266,14 +268,14 @@ export default function CreateNewWindow(props) {
             name="innerDoor"
           >
             <FormControlLabel
-              value={true}
-              control={<Radio />}
-              label="Inner"
-            />
-            <FormControlLabel
               value={false}
               control={<Radio />}
               label="Outer"
+            />
+            <FormControlLabel
+              value={true}
+              control={<Radio />}
+              label="Inner"
             />
           </RadioGroup>
         </FormControl>
